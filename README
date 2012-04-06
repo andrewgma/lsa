@@ -1,0 +1,4 @@
+Latent Semantic Analysis
+
+Takes in a text file with attributes on each line separated by a space.
+Outputs a csv file with row: attribute, dimension 1 svd, dimension 2 svd, dimensions 3 svd...
