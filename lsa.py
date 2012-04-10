@@ -16,7 +16,6 @@ class LSA(object):
     def __init__(self):
         self.wdict = {}
         self.dcount = 0  
-        self.wordlist = []
 
     def parse(self, doc):
         words = doc.split();
@@ -25,7 +24,6 @@ class LSA(object):
                 self.wdict[w].append(self.dcount)
             else:
                 self.wdict[w] = [self.dcount]
-                self.wordlist.append(w)
         self.dcount += 1
 
     def build(self):
@@ -48,9 +46,9 @@ class LSA(object):
                 self.A[i,j] = (self.A[i,j] / WordsPerDoc[j]) * log(float(cols) / DocsPerWord[i])
    
     def makeCSV(self):
-    	c=csv.writer(open("moods.csv","wb"))
-    	for i in range(len(self.wordlist)):
-    		c.writerow([self.wordlist[i],-1*self.U[i][0],-1*self.U[i][1],-1*self.U[i][2]])
+        c=csv.writer(open("moods.csv","wb"))
+        for i in range(len(self.keys)):
+            c.writerow([self.keys[i],-1*self.U[i,0],-1*self.U[i,1],-1*self.U[i,2]])
 
 
 mylsa = LSA()
